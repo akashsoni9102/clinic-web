@@ -14,7 +14,8 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
+
 import navimage from "../assets/nav-logo.png";
 
 const NavBar = () => {
