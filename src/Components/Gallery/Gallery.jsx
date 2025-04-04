@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Grid, Card, CardMedia, Typography, Dialog, DialogContent } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  Typography,
+  Dialog,
+  DialogContent,
+} from "@mui/material";
+import { Grid } from "@mui/system"; // ✅ This is the correct Grid for v2 layout
 
 import photo1 from "./GalleryAssets/photo1.jpg";
 import photo2 from "./GalleryAssets/photo2.jpg";
@@ -37,13 +44,22 @@ export default function GalleryPage() {
 
   return (
     <div style={{ padding: 20 }}>
-      <Typography variant="h4" gutterBottom align="center" style={{ color: "#4A90E2" }}>
+      <Typography
+        variant="h4"
+        gutterBottom
+        align="center"
+        style={{ color: "#4A90E2" }}
+      >
         Our Gallery
       </Typography>
-      <Grid container spacing={2}>
+
+      <Grid container columns={12} spacing={2}>
         {images.map((image) => (
-          <Grid item key={image.id} xs={6} sm={3}>
-            <Card onClick={() => handleOpen(image.url)} style={{ cursor: "pointer" }}>
+          <Grid key={image.id} columnspan={{ xs: 6, sm: 3 }}>
+            <Card
+              onClick={() => handleOpen(image.url)}
+              style={{ cursor: "pointer" }}
+            >
               <CardMedia
                 component="img"
                 image={image.url}

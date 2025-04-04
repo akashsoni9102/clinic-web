@@ -11,7 +11,6 @@ import blog6 from "./blogAssets/blog6.webp";
 import blog7 from "./blogAssets/blog7.jpg";
 import blog8 from "./blogAssets/blog8.jpg";
 import blog9 from "./blogAssets/blog9.jpg";
-
 // Styled components with blue color and responsive adjustments
 const BlogContainer = styled("div")(({ theme }) => ({
   padding: "20px",
@@ -209,55 +208,61 @@ const BlogPage = () => {
         Lorem ipsum is simply dummy text of the printing and typesetting
         industry. Lorem ipsum standard dummy text.
       </Subtitle>
-      <Grid container spacing={3} justifyContent="center">
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        display="flex"
+        flexWrap="wrap"
+      >
         {blogPosts.slice(0, visiblePosts).map((post) => (
-          <Grid item key={post.id} xs={12} sm={6} md={4} lg={3}>
+          <Grid
+            key={post.id}
+            sx={{
+              flexBasis: {
+                xs: "100%",
+                sm: "50%",
+                md: "33.33%",
+                lg: "25%",
+              },
+              maxWidth: {
+                xs: "100%",
+                sm: "50%",
+                md: "33.33%",
+                lg: "25%",
+              },
+              boxSizing: "border-box",
+              padding: "12px",
+            }}
+          >
             <BlogCard>
-              <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
-              <CardContent>
-                <Typography
-                  variant="caption"
-                  color="textSecondary"
-                  gutterBottom
-                >
-                  {post.date}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  component="h2"
-                  sx={{
-                    fontSize: { xs: "1rem", sm: "1.25rem" },
-                  }}
-                >
-                  {post.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  paragraph
-                  sx={{
-                    fontSize: { xs: "0.85rem", sm: "0.9rem" },
-                  }}
-                >
-                  {post.content}
-                </Typography>
-                <ReadMoreButton
-                  variant="contained"
-                  size="small"
-                  onClick={() => handleReadMore(post.id)}
-                >
-                  Read More
-                </ReadMoreButton>
-              </CardContent>
+            <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
+  <CardContent>
+    <Typography variant="h6" gutterBottom>
+      {post.title}
+    </Typography>
+    <Typography variant="body2" color="textSecondary" gutterBottom>
+      {post.date}
+    </Typography>
+    <Typography variant="body2" color="textSecondary">
+      {post.content}
+    </Typography>
+    <ReadMoreButton
+      variant="contained"
+      size="small"
+      onClick={() => handleReadMore(post.id)}
+      sx={{ mt: 2 }}
+    >
+      Read More
+    </ReadMoreButton>
+  </CardContent>
             </BlogCard>
           </Grid>
         ))}
       </Grid>
+
       {visiblePosts < blogPosts.length && (
-        <LoadMoreButton
-          variant="contained"
-          onClick={handleLoadMore}
-        >
+        <LoadMoreButton variant="contained" onClick={handleLoadMore}>
           Load More
         </LoadMoreButton>
       )}

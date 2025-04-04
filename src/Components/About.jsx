@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Grid, Typography } from "@mui/material";
+import { Container, Box, Typography } from "@mui/material";
 import aboutimg1 from "../assets/about-1.jpg"; // replace with your image path
 import aboutimg2 from "../assets/about-2.jpg"; // replace with your image path
 

@@ -73,43 +73,44 @@ const Services = () => {
       </Typography>
 
       {/* Service Boxes */}
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <ServiceBox
-            title="Facial"
-            image={ser1}
-            content="Facial treatments aim to rejuvenate and improve the health of your skin. With customized treatments, we focus on clearing skin, reducing signs of aging, and enhancing your natural glow."
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ServiceBox
-            title="Rhinoplasty"
-            image={service2}
-            content="Rhinoplasty, also known as a nose job, is a procedure that can enhance the shape, structure, and function of your nose, providing a more balanced facial appearance."
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ServiceBox
-            title="Eye Restructure"
-            image={service3}
-            content="Our eye structure services focus on enhancing the appearance of your eyes, whether it's for eyelid surgery or restoring symmetry to your eyes, giving you a refreshed look."
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ServiceBox
-            title="Fungal Treatment"
-            image={service4}
-            content="We offer specialized treatments for fungal infections affecting the skin, nails, and scalp. Our expert dermatologists provide effective, long-lasting solutions."
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ServiceBox
-            title="Ear Recreation"
-            image={service5}
-            content="Ear recreation surgery is aimed at reconstructing or reshaping the ears for individuals born with deformities or those affected by trauma, helping restore both function and aesthetic."
-          />
-        </Grid>
-      </Grid>
+      <Grid container columns={12} spacing={3}>
+  <Grid columnspan={{ xs: 12, md: 6 }}>
+    <ServiceBox
+      title="Facial"
+      image={ser1}
+      content="Facial treatments aim to rejuvenate and improve the health of your skin. With customized treatments, we focus on clearing skin, reducing signs of aging, and enhancing your natural glow."
+    />
+  </Grid>
+  <Grid columnspan={{ xs: 12, md: 6 }}>
+    <ServiceBox
+      title="Rhinoplasty"
+      image={service2}
+      content="Rhinoplasty, also known as a nose job, is a procedure that can enhance the shape, structure, and function of your nose, providing a more balanced facial appearance."
+    />
+  </Grid>
+  <Grid columnspan={{ xs: 12, md: 6 }}>
+    <ServiceBox
+      title="Eye Restructure"
+      image={service3}
+      content="Our eye structure services focus on enhancing the appearance of your eyes, whether it's for eyelid surgery or restoring symmetry to your eyes, giving you a refreshed look."
+    />
+  </Grid>
+  <Grid columnspan={{ xs: 12, md: 6 }}>
+    <ServiceBox
+      title="Fungal Treatment"
+      image={service4}
+      content="We offer specialized treatments for fungal infections affecting the skin, nails, and scalp. Our expert dermatologists provide effective, long-lasting solutions."
+    />
+  </Grid>
+  <Grid columnspan={{ xs: 12, md: 6 }}>
+    <ServiceBox
+      title="Ear Recreation"
+      image={service5}
+      content="Ear recreation surgery is aimed at reconstructing or reshaping the ears for individuals born with deformities or those affected by trauma, helping restore both function and aesthetic."
+    />
+  </Grid>
+</Grid>
+
     </Container>
   );
 };

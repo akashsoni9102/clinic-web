@@ -15,7 +15,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
 
 import navimage from "../assets/nav-logo.png";
 

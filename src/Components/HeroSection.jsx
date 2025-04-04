@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button, Typography, Container, Box } from "@mui/material";
 import heroimage from "../assets/heroimage.png";
 import { useNavigate } from "react-router-dom";
-import AppointmentBooking from "./AppointmentBooking";
-
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -83,10 +81,7 @@ const HeroSection = () => {
             >
               Appointment
             </Button>
-            <Button
-              onClick={() => navigate("/Contact")}
-              variant="outlined"
-            >
+            <Button onClick={() => navigate("/Contact")} variant="outlined">
               Enquiry
             </Button>
           </Box>

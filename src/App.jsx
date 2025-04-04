@@ -5,13 +5,12 @@ import Gallery from "./Components/Gallery/Gallery";
 import About from "./Components/About";
 import Services from "./Components/Services";
 import Contact from "./Components/Contact";
-import Testimonials from "./Components/Testimonials";
+
 import PostDetail from "./Components/Blog/PostDetail";
 import BlogPage from "./Components/Blog/BlogPage";
 import Home from "./Components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import HeroSection from "./Components/HeroSection";
 import AppointmentBooking from "./Components/AppointmentBooking";
 import Footer from "./Components/Footer";
 
