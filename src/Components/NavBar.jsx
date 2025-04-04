@@ -14,9 +14,8 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 import navimage from "../assets/nav-logo.png";
 
@@ -32,7 +31,7 @@ const NavBar = () => {
     { label: "Home", path: "/" },
     { label: "About Us", path: "/about" },
     { label: "Our Services", path: "/services" },
-    { label: "Testimonials", path: "/testimonials" },
+    { label: "Gallery", path: "/gallery" },
     { label: "Contact Us", path: "/contact" },
     { label: "Blog", path: "/blog" },
   ];
@@ -44,11 +43,10 @@ const NavBar = () => {
           <Typography variant="h6" color="primary">
             <img
               src={navimage}
-             
               alt="Logo"
               onClick={() => navigate("/")}
               style={{
-                cursor:"pointer",
+                cursor: "pointer",
                 width: "150px",
                 height: "auto",
                 maxWidth: "100%",

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-
 import {
   Box,
   TextField,
@@ -12,20 +11,22 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/material.css"; // Import Material UI style for Phone Input
 
 // Create a default theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1976d2", // Blue color
+      main: "#1976d2",
     },
   },
 });
 
-// Custom styled components for hover effects with fallback
+// Custom styled components for hover effects
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "&:hover .MuiOutlinedInput-root": {
-    borderColor: theme?.palette?.primary?.main || "#1976d2", // Fallback color
+    borderColor: theme?.palette?.primary?.main || "#1976d2",
     transition: "border-color 0.3s ease-in-out",
   },
   "& .MuiOutlinedInput-root": {
@@ -59,7 +60,8 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    workEmail: "",
+    mobile: "",
+    email: "",
     message: "",
   });
 
@@ -71,9 +73,22 @@ const ContactForm = () => {
     }));
   };
 
+  const handlePhoneChange = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      mobile: value,
+    }));
+  };
+
   const handleSubmit = async (e) => {
-    console.log(formData);
     e.preventDefault();
+
+    if (!formData.mobile) {
+      Swal.fire("Please enter your contact number.");
+      return;
+    }
+
+    console.log(formData);
     try {
       const response = await fetch("http://localhost:5000/send-email", {
         method: "POST",
@@ -88,7 +103,8 @@ const ContactForm = () => {
         setFormData({
           firstName: "",
           lastName: "",
-          workEmail: "",
+          mobile: "",
+          email: "",
           message: "",
         });
       } else {
@@ -138,7 +154,7 @@ const ContactForm = () => {
               textAlign: "center",
             }}
           >
-            Contact Us
+            Enquiry Form
           </Typography>
 
           <Typography
@@ -174,19 +190,41 @@ const ContactForm = () => {
                 required
               />
 
-              <StyledTextField
-                label="Email"
-                name="workEmail"
-                type="email"
-                value={formData.workEmail}
-                onChange={handleChange}
-                variant="outlined"
-                fullWidth
-                required
+              {/* Phone Input with Country Code and Flag */}
+              <PhoneInput
+                country={"in"} // Default country to India
+                value={formData.mobile}
+                onChange={handlePhoneChange}
+                inputProps={{
+                  name: "contactNumber",
+                  required: true,
+                }}
+                containerStyle={{ width: "100%" }}
+                inputStyle={{
+                  width: "100%",
+                  height: "56px",
+                  borderRadius: "4px",
+                  border: "1px solid #ccc",
+                  fontSize: "16px",
+                  paddingLeft: "50px",
+                }}
+                buttonStyle={{
+                  borderRight: "1px solid #ccc",
+                }}
               />
 
               <StyledTextField
-                label="Message"
+                label="Email (Optional)"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                variant="outlined"
+                fullWidth
+              />
+
+              <StyledTextField
+                label="Message (Optional)"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
@@ -194,7 +232,6 @@ const ContactForm = () => {
                 multiline
                 rows={4}
                 fullWidth
-                required
               />
 
               <StyledButton type="submit" fullWidth>

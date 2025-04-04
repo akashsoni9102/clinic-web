@@ -97,7 +97,7 @@ const AppointmentBooking = () => {
           gutterBottom
           textAlign="center"
         >
-          Book an Appointment
+          Book your Appointment
         </Typography>
         <Box
           component="form"

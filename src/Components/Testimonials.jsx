@@ -11,37 +11,37 @@ const testimonials = [
   {
     id: 1,
     text: "This service is amazing! The doctors are highly professional, and booking an appointment was so easy.",
-    image: testi1, // Replace with actual image URL
+    image: testi1,
     name: "John Doe",
     position: "Software Engineer",
   },
   {
     id: 2,
     text: "I had a great experience! The consultation was seamless, and the doctor was very helpful.",
-    image: testi2, // Replace with actual image URL
+    image: testi2,
     name: "Jane Smith",
     position: "Marketing Manager",
   },
   {
     id: 3,
     text: "Highly recommend this service! It saved me so much time and effort in finding the right specialist.",
-    image: testi3, // Replace with actual image URL
+    image: testi3,
     name: "Michael Johnson",
     position: "Entrepreneur",
   },
   {
     id: 4,
     text: "Highly recommend this service! It saved me so much time and effort in finding the right specialist.",
-    image: testi4, // Replace with actual image URL
-    name: "Virat Kholi",
-    position: "Entrepreneur",
+    image: testi4,
+    name: "Virat Kohli",
+    position: "Cricketer",
   },
   {
     id: 5,
     text: "Highly recommend this service! It saved me so much time and effort in finding the right specialist.",
-    image: testi5, // Replace with actual image URL
+    image: testi5,
     name: "Rohit Sharma",
-    position: "Entrepreneur",
+    position: "Cricketer",
   },
 ];
 
@@ -51,21 +51,22 @@ const Testimonials = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000); // Auto-slide every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "400px",
+        width: "100vw",
+        maxWidth: "100%",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#f0f4ff",
         overflow: "hidden",
-        p: 3,
+        px: 2,
       }}
     >
       <AnimatePresence mode="wait">
@@ -75,13 +76,23 @@ const Testimonials = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          style={{ display: "flex", width: "100%", maxWidth: "900px" }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            width: "100%",
+            maxWidth: "900px",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+          }}
         >
           {/* Left Section - Text */}
           <Box
             sx={{
               flex: 1,
               p: 3,
+              minWidth: "300px",
+              maxWidth: "450px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -102,12 +113,18 @@ const Testimonials = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              minWidth: "250px",
             }}
           >
             <img
               src={testimonials[index].image}
               alt={testimonials[index].name}
-              style={{ width: "100%", maxWidth: "300px", borderRadius: "10px" }}
+              style={{
+                width: "100%",
+                maxWidth: "250px",
+                borderRadius: "10px",
+                objectFit: "cover",
+              }}
             />
           </Box>
         </motion.div>

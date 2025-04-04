@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Box, Grid, Typography, Button } from "@mui/material";
 
-
 import ser1 from "../assets/ser1.jpeg"; // replace with actual image path
 import service2 from "../assets/ser2.jpeg"; // replace with actual image path
 import service3 from "../assets/ser3.jpeg"; // replace with actual image path
