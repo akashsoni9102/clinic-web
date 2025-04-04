@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Grid, Card, CardMedia, Typography, Dialog, DialogContent } from "@mui/material";
 
-import photo1 from "./galleryAssets/photo1.jpg";
-import photo2 from "./galleryAssets/photo2.jpg";
-import photo3 from "./galleryAssets/photo3.jpg";
-import photo4 from "./galleryAssets/photo4.jpg";
-import photo5 from "./galleryAssets/photo5.jpg";
-import photo6 from "./galleryAssets/photo6.jpg";
-import photo7 from "./galleryAssets/photo7.jpg";
-import photo8 from "./galleryAssets/photo8.jpg";
+import photo1 from "./GalleryAssets/photo1.jpg";
+import photo2 from "./GalleryAssets/photo2.jpg";
+import photo3 from "./GalleryAssets/photo3.jpg";
+import photo4 from "./GalleryAssets/photo4.jpg";
+import photo5 from "./GalleryAssets/photo5.jpg";
+import photo6 from "./GalleryAssets/photo6.jpg";
+import photo7 from "./GalleryAssets/photo7.jpg";
+import photo8 from "./GalleryAssets/photo8.jpg";
 
 const images = [
   { id: 1, url: photo1 },
