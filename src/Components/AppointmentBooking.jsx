@@ -38,7 +38,7 @@ const AppointmentBooking = () => {
     console.log(formData);
 
     try {
-      const response = await fetch(`${VITE_API_URL}/send-appointment`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/send-appointment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

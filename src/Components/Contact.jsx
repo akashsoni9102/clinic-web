@@ -90,7 +90,7 @@ const ContactForm = () => {
 
     console.log(formData);
     try {
-      const response = await fetch(`${VITE_API_URL}/send-email`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
