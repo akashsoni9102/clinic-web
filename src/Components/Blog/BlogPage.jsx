@@ -24,7 +24,7 @@ const BlogContainer = styled("div")(({ theme }) => ({
 const Title = styled(Typography)(({ theme }) => ({
   color: "#27374D",
   textAlign: "center",
-  marginBottom: "60px", // Increased spacing below heading
+  marginBottom: "20px",
   fontSize: "2.5rem",
   fontWeight: "bold",
   [theme.breakpoints.down("sm")]: {
@@ -53,6 +53,11 @@ const BlogCard = styled(Card)(({ theme }) => ({
   margin: "0 auto 20px",
   backgroundColor: "#DDE6ED",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  "&:hover": {
+    transform: "scale(1.05)",
+    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+  },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "100%",
   },
@@ -80,7 +85,7 @@ const ReadMoreButton = styled(Button)(({ theme }) => ({
 const LoadMoreButton = styled(Button)(({ theme }) => ({
   display: "block",
   margin: "20px auto",
-  backgroundColor: "#27374D", // Updated to match your color
+  backgroundColor: "#27374D",
   color: "#fff",
   "&:hover": {
     backgroundColor: "#1b2533",
@@ -97,84 +102,96 @@ const blogPosts = [
     title: "The Ultimate Guide to Healthy, Glowing Skin",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog1,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 2,
     title: "How to Prevent and Treat Acne Effectively",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog2,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 3,
     title: "The Best Anti-Aging Skincare Routine for All Skin Types",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog3,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 4,
     title: "Common Skin Conditions and How to Manage Them",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog4,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 5,
     title: "The Importance of Sunscreen: Protecting Your Skin from Damage",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog5,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 6,
     title: "Winter vs. Summer Skincare: What You Need to Know",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog6,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 7,
     title: "How to Identify and Treat Different Types of Rashes",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog7,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 8,
     title: "Myth vs. Fact: Debunking Skincare Misconceptions",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog8,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 9,
     title: "Best Dermatologist-Approved Products for Sensitive Skin",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog9,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 10,
     title: "Skincare Tips for Beginners",
     date: "June 15, 2020 | Dr. Manish Soni",
     image: blog1,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 11,
     title: "Understanding Your Skin Type",
     date: "June 20, 2020 | Dr. Manish Soni",
     image: blog2,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 12,
     title: "DIY Skincare Recipes for Glowing Skin",
     date: "June 25, 2020 | Dr. Manish Soni",
     image: blog3,
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
 ];
 

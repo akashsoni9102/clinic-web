@@ -6,7 +6,7 @@ import {
   Dialog,
   DialogContent,
 } from "@mui/material";
-import { Grid } from "@mui/system"; // ✅ This is the correct Grid for v2 layout
+import { Grid } from "@mui/system"; // ✅ MUI v2 layout system
 
 import photo1 from "./GalleryAssets/photo1.jpg";
 import photo2 from "./GalleryAssets/photo2.jpg";
@@ -43,12 +43,18 @@ export default function GalleryPage() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div style={{ padding: 20, backgroundColor: "#DDE6ED", minHeight: "100vh" }}>
       <Typography
-        variant="h4"
+        variant="h3"
         gutterBottom
         align="center"
-        style={{ color: "#4A90E2" }}
+        style={{
+          color: "#27374D",
+      
+          fontSize: "2.5rem",
+          fontWeight: "bold",
+          marginBottom: "20px",
+        }}
       >
         Our Gallery
       </Typography>

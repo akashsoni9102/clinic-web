@@ -70,7 +70,7 @@ const HeroSection = () => {
             Best Dermatologist in Gurgaon City
           </Typography>
           <Typography variant="body1" sx={{ mb: 3 }}>
-            Book your appointment online – Fast, Easy, Secure!
+            Book your appointment online – Fast and Easy!
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
             <Button
@@ -101,21 +101,26 @@ const HeroSection = () => {
               Enquiry
             </Button>
           </Box>
-          <Box sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 4 }}>
+          <Box
+            sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 4 }}
+          >
             <Box>
-              <Typography variant="h6" sx={{ color: "#27374D" }}>
+              <Typography
+                variant="h6"
+                sx={{ color: "#27374D" }}
+                fontWeight="bold"
+              >
                 {patientsCount}k+
               </Typography>
               <Typography variant="body2">Happy Patients</Typography>
             </Box>
+
             <Box>
-              <Typography variant="h6" sx={{ color: "#27374D" }}>
-                {doctorsCount}+
-              </Typography>
-              <Typography variant="body2">Specialist Doctors</Typography>
-            </Box>
-            <Box>
-              <Typography variant="h6" sx={{ color: "#27374D" }}>
+              <Typography
+                variant="h6"
+                sx={{ color: "#27374D" }}
+                fontWeight="bold"
+              >
                 {successRate}%
               </Typography>
               <Typography variant="body2">Our Success Rate</Typography>

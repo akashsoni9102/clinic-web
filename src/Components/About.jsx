@@ -12,6 +12,8 @@ const About = () => {
         <Typography
           variant="h3"
           gutterBottom
+          fontSize="2.5rem"
+          fontWeight="bold"
           textAlign="center"
           sx={{ mb: 4, color: "#27374D", fontWeight: "bold" }}
         >
@@ -45,17 +47,19 @@ const About = () => {
               <b>MD (Gold Medalist) in Dermatology</b>. Later he pursued IADVL
               Fellowship from prestigious <b>‘AIIMS, New Delhi’</b>. He's been{" "}
               <b>awarded Gold Medal twice</b>. His work in Dermatology is
-              published in reputed National and International journals. Presented
-              papers at many national and International conferences. Having{" "}
+              published in reputed National and International journals.
+              Presented papers at many national and International conferences.
+              Having{" "}
               <b>
                 experience of 15 years with ethical and best in class methods of
                 treatment
               </b>
               . Accurate diagnosis, specific treatment related to illness and
-              empathetic behaviour towards his patients. Dr. Manish Soni stands as
-              the <b>best Dermatologist in Gurgaon</b>. Stratum skin & hair clinic
-              is one of the best hair transplant, skin clinic in Gurugram,
-              aesthetic centre, providing a wide range of skin care services.
+              empathetic behaviour towards his patients. Dr. Manish Soni stands
+              as the <b>best Dermatologist in Gurgaon</b>. Stratum skin & hair
+              clinic is one of the best hair transplant, skin clinic in
+              Gurugram, aesthetic centre, providing a wide range of
+              skin care services.
             </Typography>
           </Box>
 
@@ -127,15 +131,15 @@ const About = () => {
             <Typography variant="body1" sx={{ textAlign: "justify", mx: 2 }}>
               Dr. Manish Soni is one of the most talented and promising
               dermatologists in India. At a young age, he achieved professional
-              milestones through dedication and continuous learning in dermatology
-              and cosmetology. He was awarded a Gold Medal for being the best
-              young dermatologist during his MD. Known for accurate diagnosis and
-              precise treatments, Dr. Manish Soni gives equal attention to all—be
-              it a minor allergy or advanced hair transplant case. Patients admire
-              his results and share their experiences on Google, Facebook, and
-              YouTube. He refers to them as 'patients,' not 'clients.' His
-              expertise and ethics make him a world-class dermatologist in
-              Gurgaon.
+              milestones through dedication and continuous learning in
+              dermatology and cosmetology. He was awarded a Gold Medal for being
+              the best young dermatologist during his MD. Known for accurate
+              diagnosis and precise treatments, Dr. Manish Soni gives equal
+              attention to all—be it a minor allergy or advanced hair transplant
+              case. Patients admire his results and share their experiences on
+              Google, Facebook, and YouTube. He refers to them as 'patients,'
+              not 'clients.' His expertise and ethics make him a world-class
+              dermatologist in Gurgaon.
             </Typography>
           </Box>
         </Box>

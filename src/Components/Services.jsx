@@ -43,6 +43,11 @@ const ServiceCard = styled(Card)(({ theme }) => ({
   margin: "0 auto 20px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   backgroundColor: "#DDE6ED",
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  "&:hover": {
+    transform: "scale(1.05)",
+    boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
+  },
   [theme.breakpoints.down("sm")]: {
     maxWidth: "100%",
   },
@@ -120,9 +125,16 @@ const ServicePage = () => {
     <ServiceContainer>
       <Title variant="h3">Our Services</Title>
       <Subtitle variant="body1">
-        Expert dermatologist you can trust, exceptional results at affordable prices.
+        Expert dermatologist you can trust, exceptional results at affordable
+        prices.
       </Subtitle>
-      <Grid container spacing={3} justifyContent="center" display="flex" flexWrap="wrap">
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        display="flex"
+        flexWrap="wrap"
+      >
         {ServicePosts.slice(0, visiblePosts).map((services) => (
           <Grid
             key={services.id}
@@ -144,9 +156,13 @@ const ServicePage = () => {
             }}
           >
             <ServiceCard>
-              <ServiceImage style={{ backgroundImage: `url(${services.image})` }} />
+              <ServiceImage
+                style={{ backgroundImage: `url(${services.image})` }}
+              />
               <CardContent>
-                <BoldServiceTitle variant="h6">{services.title}</BoldServiceTitle>
+                <BoldServiceTitle variant="h6">
+                  {services.title}
+                </BoldServiceTitle>
                 <ReadMoreButton
                   variant="contained"
                   size="small"

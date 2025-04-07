@@ -8,12 +8,7 @@ import {
   Grid,
   Paper,
 } from "@mui/material";
-import {
-  Facebook,
-  Instagram,
-  LinkedIn,
-  YouTube,
-} from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, YouTube } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const XIcon = (props) => (
@@ -27,10 +22,18 @@ const Footer = () => {
 
   return (
     <Box sx={{ backgroundColor: "#27374D", color: "#DDE6ED", px: 3, py: 5 }}>
-      <Grid container columns={{ xs: 12, md: 12 }} columnSpacing={3} rowSpacing={4}>
+      <Grid
+        container
+        columns={{ xs: 12, md: 12 }}
+        columnSpacing={3}
+        rowSpacing={4}
+      >
         {/* Our Address */}
-        <Grid  gridColumn={{ xs: "span 12", md: "span 4" }}>
-          <Paper elevation={0} sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}>
+        <Grid gridColumn={{ xs: "span 12", md: "span 4" }}>
+          <Paper
+            elevation={0}
+            sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}
+          >
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               Our Address
             </Typography>
@@ -62,7 +65,10 @@ const Footer = () => {
 
         {/* Contact Us */}
         <Grid gridColumn={{ xs: "span 12", md: "span 4" }}>
-          <Paper elevation={0} sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}>
+          <Paper
+            elevation={0}
+            sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}
+          >
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               Contact Us
             </Typography>
@@ -79,13 +85,25 @@ const Footer = () => {
               Phone:
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-              <Link href="tel:+919310115620" underline="hover" sx={{ color: "#DDE6ED" }}>
+              <Link
+                href="tel:+919310115620"
+                underline="hover"
+                sx={{ color: "#DDE6ED" }}
+              >
                 (+91) 9310115620
               </Link>
-              <Link href="tel:+919711223686" underline="hover" sx={{ color: "#DDE6ED" }}>
+              <Link
+                href="tel:+919711223686"
+                underline="hover"
+                sx={{ color: "#DDE6ED" }}
+              >
                 (+91) 9711223686
               </Link>
-              <Link href="tel:+911244367729" underline="hover" sx={{ color: "#DDE6ED" }}>
+              <Link
+                href="tel:+911244367729"
+                underline="hover"
+                sx={{ color: "#DDE6ED" }}
+              >
                 0124-4367729
               </Link>
             </Box>
@@ -93,8 +111,11 @@ const Footer = () => {
         </Grid>
 
         {/* Follow Us */}
-        <Grid  gridColumn={{ xs: "span 12", md: "span 4" }}>
-          <Paper elevation={0} sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}>
+        <Grid gridColumn={{ xs: "span 12", md: "span 4" }}>
+          <Paper
+            elevation={0}
+            sx={{ p: 2, backgroundColor: "transparent", color: "#DDE6ED" }}
+          >
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               Follow Us
             </Typography>
@@ -115,7 +136,7 @@ const Footer = () => {
                 <XIcon fontSize="small" />
               </Link>
               <Link
-                href="https://www.facebook.com/drmanishsonidermatology/cd"
+                href="https://www.facebook.com/drmanishsonidermatology/"
                 target="_blank"
                 underline="hover"
                 sx={{ color: "#DDE6ED" }}
@@ -171,7 +192,8 @@ const Footer = () => {
         display="block"
         textAlign="center"
       >
-        © {new Date().getFullYear()} Stratum Skin & Hair Clinic. All rights reserved.
+        © {new Date().getFullYear()} Stratum Skin & Hair Clinic. All rights
+        reserved.
       </Typography>
     </Box>
   );
