@@ -38,13 +38,16 @@ const AppointmentBooking = () => {
     console.log(formData);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/send-appointment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/send-appointment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         await Swal.fire({
@@ -52,11 +55,47 @@ const AppointmentBooking = () => {
           text: "We will reach you shortly.",
           icon: "success",
           confirmButtonText: "OK",
+          background: "#DDE6ED",
+          didOpen: () => {
+            const swal = document.querySelector(".swal2-popup");
+            const title = document.querySelector(".swal2-title");
+            const confirmButton = document.querySelector(".swal2-confirm");
+            const icon = document.querySelector(".swal2-icon.swal2-success");
+
+            if (swal) {
+              swal.style.borderRadius = "8px";
+            }
+
+            if (title) {
+              title.style.color = "#27374D";
+              title.style.fontWeight = "bold";
+            }
+
+            if (confirmButton) {
+              confirmButton.style.backgroundColor = "#27374D";
+              confirmButton.style.color = "#ffffff";
+              confirmButton.style.border = "none";
+              confirmButton.style.padding = "0.6em 1.2em";
+              confirmButton.style.borderRadius = "4px";
+              confirmButton.style.fontWeight = "bold";
+              confirmButton.style.fontSize = "1rem";
+              confirmButton.style.cursor = "pointer";
+            }
+
+            if (icon) {
+              // Apply color to the entire success icon circle
+              icon.style.borderColor = "#526D82";
+              icon.style.color = "#526D82";
+              const circle = icon.querySelector("div.swal2-success-ring");
+              const lines = icon.querySelectorAll("span");
+              if (circle) circle.style.border = "4px solid #526D82";
+              if (lines[0]) lines[0].style.backgroundColor = "#526D82"; // first line
+              if (lines[1]) lines[1].style.backgroundColor = "#526D82"; // second line
+            }
+          },
         });
 
-        // Reset values without causing unnecessary reflow
-        setFormData((prevData) => ({
-          ...prevData,
+        setFormData({
           name: "",
           age: "",
           gender: "",
@@ -64,7 +103,7 @@ const AppointmentBooking = () => {
           mobile: "",
           email: "",
           problemDescription: "",
-        }));
+        });
       } else {
         await Swal.fire({
           title: "Booking Failed",
@@ -78,10 +117,29 @@ const AppointmentBooking = () => {
       Swal.fire("An error occurred. Please try again.");
     }
   };
+
+  const fieldStyle = {
+    backgroundColor: "#DDE6ED",
+    "& .MuiInputBase-root": {
+      backgroundColor: "#DDE6ED",
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#27374D",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#27374D",
+    },
+  };
+
+  const menuItemStyle = {
+    backgroundColor: "#DDE6ED",
+    color: "#27374D",
+  };
+
   return (
     <Box
       sx={{
-        backgroundColor: "#f0f4ff",
+        backgroundColor: "#DDE6ED",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
@@ -90,19 +148,30 @@ const AppointmentBooking = () => {
         py: 4,
       }}
     >
-      <Container maxWidth="sm">
+      <Container
+        maxWidth="sm"
+        sx={{
+          backgroundColor: "#DDE6ED",
+          boxShadow: 3,
+          borderRadius: 2,
+          py: 4,
+          px: 3,
+        }}
+      >
         <Typography
           variant="h4"
           fontWeight="bold"
           gutterBottom
           textAlign="center"
+          sx={{ color: "#27374D" }}
         >
           Book your Appointment
         </Typography>
+
         <Box
           component="form"
           onSubmit={handleSubmit}
-          sx={{ display: "flex", flexDirection: "column", gap: 2, mb: 3 }}
+          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
         >
           <TextField
             label="Name"
@@ -111,6 +180,7 @@ const AppointmentBooking = () => {
             onChange={handleChange}
             required
             fullWidth
+            sx={fieldStyle}
           />
           <TextField
             label="Age"
@@ -120,6 +190,7 @@ const AppointmentBooking = () => {
             onChange={handleChange}
             required
             fullWidth
+            sx={fieldStyle}
           />
           <TextField
             select
@@ -129,10 +200,17 @@ const AppointmentBooking = () => {
             onChange={handleChange}
             required
             fullWidth
+            sx={fieldStyle}
           >
-            <MenuItem value="Male">Male</MenuItem>
-            <MenuItem value="Female">Female</MenuItem>
-            <MenuItem value="Others">Others</MenuItem>
+            <MenuItem value="Male" sx={menuItemStyle}>
+              Male
+            </MenuItem>
+            <MenuItem value="Female" sx={menuItemStyle}>
+              Female
+            </MenuItem>
+            <MenuItem value="Others" sx={menuItemStyle}>
+              Others
+            </MenuItem>
           </TextField>
           <TextField
             select
@@ -142,29 +220,61 @@ const AppointmentBooking = () => {
             onChange={handleChange}
             required
             fullWidth
+            sx={fieldStyle}
           >
-            <MenuItem value="Skin Issue">Skin Issue</MenuItem>
-            <MenuItem value="Fungal Issue">Fungal Issue</MenuItem>
-            <MenuItem value="Hair Issue">Hair Issue</MenuItem>
+            <MenuItem value="Skin Issue" sx={menuItemStyle}>
+              Skin Issue
+            </MenuItem>
+            <MenuItem value="Fungal Issue" sx={menuItemStyle}>
+              Fungal Issue
+            </MenuItem>
+            <MenuItem value="Hair Issue" sx={menuItemStyle}>
+              Hair Issue
+            </MenuItem>
           </TextField>
-          <PhoneInput
-            country={"in"} // Default to India
-            value={formData.mobile}
-            onChange={handlePhoneChange}
-            inputStyle={{
-              width: "100%",
-              height: "56px",
-              borderRadius: "4px",
+
+          <Box
+            sx={{
               border: "1px solid rgba(0, 0, 0, 0.23)",
-              paddingLeft: "50px",
+              borderRadius: "4px",
+              backgroundColor: "#DDE6ED",
+              height: "56px",
+              display: "flex",
+              alignItems: "center",
+              px: 1,
+              "&:focus-within": {
+                borderColor: "#27374D",
+              },
+              "& .react-tel-input .form-control:focus": {
+                outline: "none !important",
+                boxShadow: "none !important",
+                border: "none !important",
+              },
             }}
-            buttonStyle={{
-              border: "none",
-              background: "transparent",
-              padding: "0 10px",
-            }}
-            required
-          />
+          >
+            <PhoneInput
+              country={"in"}
+              value={formData.mobile}
+              onChange={handlePhoneChange}
+              inputStyle={{
+                border: "none",
+                backgroundColor: "#DDE6ED",
+                width: "100%",
+                height: "100%",
+                outline: "none",
+                boxShadow: "none",
+              }}
+              buttonStyle={{
+                border: "none",
+                backgroundColor: "#DDE6ED",
+              }}
+              containerStyle={{
+                width: "100%",
+              }}
+              required
+            />
+          </Box>
+
           <TextField
             label="Email (Optional)"
             name="email"
@@ -172,6 +282,7 @@ const AppointmentBooking = () => {
             value={formData.email}
             onChange={handleChange}
             fullWidth
+            sx={fieldStyle}
           />
           <TextField
             label="Problem Description (Optional)"
@@ -181,9 +292,22 @@ const AppointmentBooking = () => {
             fullWidth
             multiline
             rows={4}
+            sx={fieldStyle}
           />
-          <Button variant="contained" type="submit" fullWidth>
-            Submit
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            sx={{
+              backgroundColor: "#27374D",
+              color: "#fff",
+              fontWeight: "bold",
+              "&:hover": {
+                backgroundColor: "#1c2a3a",
+              },
+            }}
+          >
+            Book Appointment
           </Button>
         </Box>
       </Container>

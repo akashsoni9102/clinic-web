@@ -5,6 +5,8 @@ import Gallery from "./Components/Gallery/Gallery";
 import About from "./Components/About";
 import Services from "./Components/Services";
 import Contact from "./Components/Contact";
+import { CssBaseline, GlobalStyles } from "@mui/material";
+import ServiceDetail from "./Components/ServiceDetail";
 
 import PostDetail from "./Components/Blog/PostDetail";
 import BlogPage from "./Components/Blog/BlogPage";
@@ -18,6 +20,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <CssBaseline />
+        <GlobalStyles
+          styles={{
+            body: {
+              margin: 0,
+              padding: 0,
+              overflowX: "hidden", // 💥 Prevent right-side scroll
+            },
+          }}
+        />
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,6 +42,8 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/" element={<BlogPage />} />
           <Route path="/post/:id" element={<PostDetail />} />
+          {/* <Route path="/services" element={<ServicePage />} /> */}
+          <Route path="/serviceDetail/:id" element={<ServiceDetail />} />
         </Routes>
         <Footer />
       </BrowserRouter>

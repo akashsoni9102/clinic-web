@@ -10,76 +10,82 @@ import {
   Divider,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import blog1 from "./blogAssets/blog1.jpg";
-import blog2 from "./blogAssets/blog2.jpg";
-import blog3 from "./blogAssets/blog3.jpg";
-import blog4 from "./blogAssets/blog4.jpg";
-import blog5 from "./blogAssets/blog5.webp";
-import blog6 from "./blogAssets/blog6.webp";
-import blog7 from "./blogAssets/blog7.jpg";
-import blog8 from "./blogAssets/blog8.jpg";
-import blog9 from "./blogAssets/blog9.jpg";
 
+import blog1 from "./Blog/blogAssets/blog1.jpg";
+import blog2 from "./Blog/blogAssets/blog2.jpg";
+import blog3 from "./Blog/blogAssets/blog3.jpg";
+import blog4 from "./Blog/blogAssets/blog4.jpg";
+import blog5 from "./Blog/blogAssets/blog5.webp";
+import blog6 from "./Blog/blogAssets/blog6.webp";
+import blog7 from "./Blog/blogAssets/blog7.jpg";
+import blog8 from "./Blog/blogAssets/blog8.jpg";
+import blog9 from "./Blog/blogAssets/blog9.jpg";
+
+// Styled Components
 const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 800,
-  margin: "30px auto",
-  padding: "25px",
-  boxShadow: "0 6px 18px rgba(0, 0, 0, 0.08)", // Subtle shadow
-  borderRadius: "12px",
-  backgroundColor: "#fafafa", // Light grayish background for sobriety
-  border: "1px solid #e0e0e0", // Soft gray border
+  maxWidth: 500,
+  margin: "20px auto",
+  padding: "16px",
+  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.06)",
+  borderRadius: "10px",
+  backgroundColor: "#ffffff",
+  border: "1px solid #e0e0e0",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   "&:hover": {
-    transform: "translateY(-4px)", // Gentle lift
-    boxShadow: "0 10px 24px rgba(0, 0, 0, 0.12)", // Slightly enhanced shadow
+    transform: "translateY(-3px)",
+    boxShadow: "0 6px 16px rgba(0, 0, 0, 0.1)",
   },
   [theme.breakpoints.down("sm")]: {
-    margin: "15px",
-    padding: "15px",
+    margin: "10px",
+    padding: "12px",
   },
 }));
 
 const Header = styled(Box)(({ theme }) => ({
-  backgroundColor: "#bbdefb", // Light blue background
-  color: "#333333", // Darker text for contrast on light bg
-  padding: "10px", // Reduced padding to make title box smaller
+  backgroundColor: "#e3f2fd",
+  color: "#333333",
+  padding: "8px",
   textAlign: "center",
   borderRadius: "8px 8px 0 0",
   [theme.breakpoints.down("sm")]: {
-    padding: "8px",
+    padding: "6px",
   },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: "#4a90e2", // Softer blue for text
-  marginBottom: "15px",
+  color: "#1976d2",
+  marginBottom: "12px",
+  fontSize: "1.1rem",
+  fontWeight: 600,
   [theme.breakpoints.down("sm")]: {
-    fontSize: "1.3rem",
+    fontSize: "1rem",
   },
 }));
 
 const ContentTypography = styled(Typography)(({ theme }) => ({
-  color: "#333333", // Darker gray for readability
-  lineHeight: "1.7",
+  color: "#333333",
+  fontSize: "0.95rem",
+  lineHeight: "1.6",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "0.9rem",
+    fontSize: "0.875rem",
   },
 }));
 
 const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
-  height: 250, // Reduced from 350 to 250px
+  height: 180,
   borderRadius: "8px",
-  marginBottom: "20px",
-  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.06)", // Subtle shadow
+  marginBottom: "16px",
+  boxShadow: "0 3px 8px rgba(0, 0, 0, 0.05)",
   [theme.breakpoints.down("sm")]: {
-    height: 150, // Reduced from 200 to 150px for mobile
+    height: 120,
   },
 }));
 
-const PostDetail = () => {
+// Main Component
+const ServiceDetail = () => {
   const { id } = useParams();
 
-  const post = {
+  const services = {
     1: {
       title: "The Ultimate Guide to Healthy, Glowing Skin",
       content:
@@ -134,42 +140,43 @@ const PostDetail = () => {
         "Explore top dermatologist-recommended products designed to care for sensitive skin types.",
       image: blog9,
     },
-  }[id];
+  };
 
-  if (!post) return <Typography>Post not found</Typography>;
+  const service = services[+id];
+
+  if (!service)
+    return <Typography align="center">Post not found</Typography>;
 
   return (
     <Container>
       <StyledCard>
         <Header>
-          <Typography variant="h5" component="h1">
-            {post.title}
+          <Typography variant="h6" component="h1">
+            {service.title}
           </Typography>
         </Header>
         <CardContent>
           <StyledCardMedia
             component="img"
-            image={post.image}
-            alt={post.title}
+            image={service.image}
+            alt={service.title}
           />
-          <Divider sx={{ my: 2, borderColor: "#4a90e2" }} />
+          <Divider sx={{ my: 1.5, borderColor: "#90caf9" }} />
           <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              mb: 2,
+              mb: 1.5,
             }}
           >
-            <StyledTypography variant="h6" component="h2">
-              Post Details
-            </StyledTypography>
+            <StyledTypography variant="subtitle1">Post Details</StyledTypography>
             <Typography variant="caption" color="textSecondary">
-              Posted on April 03, 2025 | Posted by Dr. Manish Soni
+              Posted on April 03, 2025 | Dr. Manish Soni
             </Typography>
           </Box>
-          <ContentTypography variant="body1" paragraph>
-            {post.content}
+          <ContentTypography variant="body2" paragraph>
+            {service.content}
           </ContentTypography>
         </CardContent>
       </StyledCard>
@@ -177,4 +184,4 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail;
+export default ServiceDetail;

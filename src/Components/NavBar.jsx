@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -12,34 +11,42 @@ import {
   List,
   ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import DesignServicesIcon from "@mui/icons-material/DesignServices";
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import ArticleIcon from "@mui/icons-material/Article";
 
 import navimage from "../assets/nav-logo.png";
 
 const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "About Us", path: "/about" },
-    { label: "Our Services", path: "/services" },
-    { label: "Gallery", path: "/gallery" },
-    { label: "Contact Us", path: "/contact" },
-    { label: "Blog", path: "/blog" },
+    { label: "Home", path: "/", icon: <HomeIcon /> },
+    { label: "About Us", path: "/about", icon: <InfoIcon /> },
+    { label: "Our Services", path: "/services", icon: <DesignServicesIcon /> },
+    { label: "Gallery", path: "/gallery", icon: <PhotoLibraryIcon /> },
+    { label: "Contact Us", path: "/contact", icon: <ContactsIcon /> },
+    { label: "Blogs", path: "/blog", icon: <ArticleIcon /> },
   ];
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "#e3f2fd" }}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="h6" color="primary">
+      <AppBar position="static" sx={{ backgroundColor: "#DDE6ED" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", px: 2 }}>
+          <Typography variant="h6" color="primary" sx={{ flexShrink: 0 }}>
             <img
               src={navimage}
               alt="Logo"
@@ -48,33 +55,48 @@ const NavBar = () => {
                 cursor: "pointer",
                 width: "150px",
                 height: "auto",
-                maxWidth: "100%",
                 objectFit: "contain",
               }}
             />
           </Typography>
 
           {/* Desktop Menu */}
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
-            {navItems.map((item) => (
-              <Button
-                key={item.label}
-                component={Link}
-                to={item.path}
-                sx={{
-                  fontWeight: "bold",
-                  color: "#1a1a1a",
-                  mx: 1,
-                  "&:hover": {
-                    color: "#ffffff",
-                    backgroundColor: "#081d3a",
-                    transition: "all 0.3s ease-in-out",
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              overflowX: "auto",
+              gap: 1,
+              ml: 2,
+            }}
+          >
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Button
+                  key={item.label}
+                  component={Link}
+                  to={item.path}
+                  startIcon={item.icon}
+                  sx={{
+                    fontWeight: "bold",
+                    whiteSpace: "nowrap",
+                    color: isActive ? "#ffffff" : "#526D82",
+                    backgroundColor: isActive ? "#526D82" : "transparent",
+                    px: 1.5,
+                    py: 1,
+                    minWidth: 0,
+                    "&:hover": {
+                      color: "#ffffff",
+                      backgroundColor: "#526D82",
+                      transition: "all 0.3s ease-in-out",
+                    },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
           </Box>
 
           {/* Mobile Menu Button */}
@@ -85,7 +107,7 @@ const NavBar = () => {
             sx={{ display: { md: "none" } }}
             onClick={handleDrawerToggle}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ color: "#526D82" }} />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -97,7 +119,7 @@ const NavBar = () => {
         onClose={handleDrawerToggle}
         sx={{ display: { md: "none" } }}
       >
-        <List sx={{ width: 250, backgroundColor: "#e3f2fd", height: "100%" }}>
+        <List sx={{ width: 250, backgroundColor: "#DDE6ED", height: "100%" }}>
           {navItems.map((item) => (
             <ListItem key={item.label} disablePadding>
               <ListItemButton
@@ -105,12 +127,23 @@ const NavBar = () => {
                 to={item.path}
                 onClick={handleDrawerToggle}
                 sx={{
-                  "&:hover": { backgroundColor: "#081d3a", transition: "0.3s" },
+                  "&:hover": {
+                    backgroundColor: "#526D82",
+                    "& .MuiListItemText-primary": { color: "#ffffff" },
+                    "& .MuiListItemIcon-root": { color: "#ffffff" },
+                    transition: "0.3s",
+                  },
                 }}
               >
+                <ListItemIcon sx={{ color: "#526D82" }}>{item.icon}</ListItemIcon>
                 <ListItemText
                   primary={item.label}
-                  sx={{ fontWeight: "bold", color: "#1a1a1a" }}
+                  sx={{
+                    ".MuiTypography-root": {
+                      color: "#526D82",
+                      fontWeight: "bold",
+                    },
+                  }}
                 />
               </ListItemButton>
             </ListItem>

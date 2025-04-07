@@ -11,10 +11,10 @@ import blog6 from "./blogAssets/blog6.webp";
 import blog7 from "./blogAssets/blog7.jpg";
 import blog8 from "./blogAssets/blog8.jpg";
 import blog9 from "./blogAssets/blog9.jpg";
-// Styled components with blue color and responsive adjustments
+
 const BlogContainer = styled("div")(({ theme }) => ({
   padding: "20px",
-  backgroundColor: "#f5f5f5",
+  backgroundColor: "#DDE6ED",
   minHeight: "100vh",
   [theme.breakpoints.down("sm")]: {
     padding: "10px",
@@ -22,21 +22,24 @@ const BlogContainer = styled("div")(({ theme }) => ({
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
-  color: "#1976d2", // Blue color
+  color: "#27374D",
   textAlign: "center",
-  marginBottom: "20px",
+  marginBottom: "60px", // Increased spacing below heading
   fontSize: "2.5rem",
+  fontWeight: "bold",
   [theme.breakpoints.down("sm")]: {
     fontSize: "1.8rem",
+    marginBottom: "40px",
   },
   [theme.breakpoints.down("xs")]: {
     fontSize: "1.5rem",
+    marginBottom: "30px",
   },
 }));
 
 const Subtitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
-  color: "#1976d2", // Blue color
+  color: "#27374D",
   marginBottom: "40px",
   fontSize: "1rem",
   [theme.breakpoints.down("sm")]: {
@@ -48,6 +51,7 @@ const Subtitle = styled(Typography)(({ theme }) => ({
 const BlogCard = styled(Card)(({ theme }) => ({
   maxWidth: 345,
   margin: "0 auto 20px",
+  backgroundColor: "#DDE6ED",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   [theme.breakpoints.down("sm")]: {
     maxWidth: "100%",
@@ -62,10 +66,10 @@ const BlogImage = styled("div")({
 });
 
 const ReadMoreButton = styled(Button)(({ theme }) => ({
-  backgroundColor: "#1976d2", // Blue color
+  backgroundColor: "#27374D",
   color: "#fff",
   "&:hover": {
-    backgroundColor: "#115293", // Darker blue on hover
+    backgroundColor: "#1b2533",
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "0.8rem",
@@ -76,10 +80,10 @@ const ReadMoreButton = styled(Button)(({ theme }) => ({
 const LoadMoreButton = styled(Button)(({ theme }) => ({
   display: "block",
   margin: "20px auto",
-  backgroundColor: "#1976d2",
+  backgroundColor: "#27374D", // Updated to match your color
   color: "#fff",
   "&:hover": {
-    backgroundColor: "#115293",
+    backgroundColor: "#1b2533",
   },
   [theme.breakpoints.down("sm")]: {
     fontSize: "0.9rem",
@@ -87,110 +91,96 @@ const LoadMoreButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-// Sample blog post data (adding more posts to demonstrate "Load More")
 const blogPosts = [
   {
     id: 1,
     title: "The Ultimate Guide to Healthy, Glowing Skin",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog1,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 2,
     title: "How to Prevent and Treat Acne Effectively",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog2,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 3,
     title: "The Best Anti-Aging Skincare Routine for All Skin Types",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog3,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 4,
     title: "Common Skin Conditions and How to Manage Them",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog4,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 5,
     title: "The Importance of Sunscreen: Protecting Your Skin from Damage",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog5,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 6,
     title: "Winter vs. Summer Skincare: What You Need to Know",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog6,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 7,
     title: "How to Identify and Treat Different Types of Rashes",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog7,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 8,
     title: "Myth vs. Fact: Debunking Skincare Misconceptions",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog8,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 9,
     title: "Best Dermatologist-Approved Products for Sensitive Skin",
     date: "May 31, 2020 | Dr. Manish Soni",
     image: blog9,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
-  // Adding more posts to demonstrate "Load More"
   {
     id: 10,
     title: "Skincare Tips for Beginners",
     date: "June 15, 2020 | Dr. Manish Soni",
     image: blog1,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 11,
     title: "Understanding Your Skin Type",
     date: "June 20, 2020 | Dr. Manish Soni",
     image: blog2,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
   {
     id: 12,
     title: "DIY Skincare Recipes for Glowing Skin",
     date: "June 25, 2020 | Dr. Manish Soni",
     image: blog3,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean incididunt ut labore et dolore magna aliqua.",
   },
 ];
 
 const BlogPage = () => {
   const navigate = useNavigate();
-  const [visiblePosts, setVisiblePosts] = useState(9); // Initially show 9 posts
+  const [visiblePosts, setVisiblePosts] = useState(9);
 
   const handleReadMore = (id) => {
     navigate(`/post/${id}`);
@@ -198,16 +188,13 @@ const BlogPage = () => {
   };
 
   const handleLoadMore = () => {
-    setVisiblePosts((prev) => prev + 3); // Load 3 more posts each time
+    setVisiblePosts((prev) => prev + 3);
   };
 
   return (
     <BlogContainer>
-      <Title variant="h3">MY BLOG</Title>
-      <Subtitle variant="body1">
-        Lorem ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem ipsum standard dummy text.
-      </Subtitle>
+      <Title variant="h3">Blogs</Title>
+
       <Grid
         container
         spacing={3}
@@ -236,26 +223,30 @@ const BlogPage = () => {
             }}
           >
             <BlogCard>
-            <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
-  <CardContent>
-    <Typography variant="h6" gutterBottom>
-      {post.title}
-    </Typography>
-    <Typography variant="body2" color="textSecondary" gutterBottom>
-      {post.date}
-    </Typography>
-    <Typography variant="body2" color="textSecondary">
-      {post.content}
-    </Typography>
-    <ReadMoreButton
-      variant="contained"
-      size="small"
-      onClick={() => handleReadMore(post.id)}
-      sx={{ mt: 2 }}
-    >
-      Read More
-    </ReadMoreButton>
-  </CardContent>
+              <BlogImage style={{ backgroundImage: `url(${post.image})` }} />
+              <CardContent>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{ color: "#27374D", fontWeight: "bold" }}
+                >
+                  {post.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" gutterBottom>
+                  {post.date}
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {post.content}
+                </Typography>
+                <ReadMoreButton
+                  variant="contained"
+                  size="small"
+                  onClick={() => handleReadMore(post.id)}
+                  sx={{ mt: 2 }}
+                >
+                  Read More
+                </ReadMoreButton>
+              </CardContent>
             </BlogCard>
           </Grid>
         ))}

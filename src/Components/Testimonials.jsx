@@ -58,15 +58,16 @@ const Testimonials = () => {
   return (
     <Box
       sx={{
-        width: "100vw",
+        width: "100%",
         maxWidth: "100%",
-        minHeight: "100vh",
+        minHeight: "auto",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f0f4ff",
+        backgroundColor: "#DDE6ED",
         overflow: "hidden",
         px: 2,
+        py: 6,
       }}
     >
       <AnimatePresence mode="wait">
@@ -98,10 +99,17 @@ const Testimonials = () => {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6" fontWeight="bold">
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              sx={{ color: "#27374D" }}
+            >
               {testimonials[index].text}
             </Typography>
-            <Typography variant="body2" color="gray" mt={2}>
+            <Typography
+              variant="body2"
+              sx={{ color: "#526D82", mt: 2 }}
+            >
               - {testimonials[index].name}, {testimonials[index].position}
             </Typography>
           </Box>

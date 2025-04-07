@@ -6,27 +6,24 @@ import {
   Button,
   Typography,
   Paper,
-  IconButton,
+  GlobalStyles,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/system";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/material.css"; // Import Material UI style for Phone Input
+import "react-phone-input-2/lib/material.css";
 
-// Create a default theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#1976d2",
+      main: "#27374D",
     },
   },
 });
 
-// Custom styled components for hover effects
 const StyledTextField = styled(TextField)(({ theme }) => ({
   "&:hover .MuiOutlinedInput-root": {
-    borderColor: theme?.palette?.primary?.main || "#1976d2",
+    borderColor: theme?.palette?.primary?.main,
     transition: "border-color 0.3s ease-in-out",
   },
   "& .MuiOutlinedInput-root": {
@@ -34,10 +31,11 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
       borderColor: "#e0e0e0",
     },
     "&:hover fieldset": {
-      borderColor: theme?.palette?.primary?.main || "#1976d2",
+      borderColor: theme?.palette?.primary?.main,
     },
     "&.Mui-focused fieldset": {
-      borderColor: theme?.palette?.primary?.main || "#1976d2",
+      borderColor: theme?.palette?.primary?.main,
+      borderWidth: "2px",
     },
   },
 }));
@@ -51,7 +49,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: "4px",
   transition: "background-color 0.3s ease-in-out, transform 0.2s ease-in-out",
   "&:hover": {
-    backgroundColor: "#1565c0",
+    backgroundColor: "#1e2d3c",
     transform: "scale(1.02)",
   },
 }));
@@ -88,7 +86,6 @@ const ContactForm = () => {
       return;
     }
 
-    console.log(formData);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/send-email`, {
         method: "POST",
@@ -99,7 +96,44 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        Swal.fire("Message sent successfully!");
+        await Swal.fire({
+          title: "Message sent successfully!",
+          background: "#DDE6ED",
+          icon: "success",
+          confirmButtonText: "OK",
+          didOpen: () => {
+            const popup = document.querySelector(".swal2-popup");
+            const title = document.querySelector(".swal2-title");
+            const icon = document.querySelector(".swal2-icon.swal2-success");
+            const button = document.querySelector(".swal2-confirm");
+
+            if (popup) popup.style.borderRadius = "8px";
+            if (title) {
+              title.style.color = "#27374D";
+              title.style.fontWeight = "bold";
+            }
+            if (button) {
+              button.style.backgroundColor = "#27374D";
+              button.style.color = "#fff";
+              button.style.border = "none";
+              button.style.padding = "0.6em 1.2em";
+              button.style.borderRadius = "4px";
+              button.style.fontWeight = "bold";
+              button.style.fontSize = "1rem";
+              button.style.cursor = "pointer";
+            }
+            if (icon) {
+              icon.style.borderColor = "#526D82";
+              icon.style.color = "#526D82";
+              const ring = icon.querySelector("div.swal2-success-ring");
+              const lines = icon.querySelectorAll("span");
+              if (ring) ring.style.border = "4px solid #526D82";
+              if (lines[0]) lines[0].style.backgroundColor = "#526D82";
+              if (lines[1]) lines[1].style.backgroundColor = "#526D82";
+            }
+          },
+        });
+
         setFormData({
           firstName: "",
           lastName: "",
@@ -118,40 +152,45 @@ const ContactForm = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      {/* Custom style for bold focus border on phone input */}
+      <GlobalStyles
+        styles={{
+          ".custom-phone-input:focus": {
+            borderColor: "#27374D !important",
+            borderWidth: "2px !important",
+            boxShadow: "none !important",
+            outline: "none !important",
+          },
+        }}
+      />
+
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          background: "#fff",
+          background: "#DDE6ED",
           padding: { xs: "10px", sm: "20px" },
         }}
       >
         <Paper
           elevation={3}
           sx={{
-            position: "relative",
             width: { xs: "100%", sm: "500px" },
             maxWidth: "500px",
             padding: { xs: "20px", sm: "30px" },
             borderRadius: "8px",
-            backgroundColor: "#fff",
+            backgroundColor: "#DDE6ED",
           }}
         >
-          <IconButton
-            sx={{ position: "absolute", top: "10px", right: "10px" }}
-            onClick={() => console.log("Close form")}
-          >
-            <CloseIcon />
-          </IconButton>
-
           <Typography
             variant="h5"
             sx={{
               fontWeight: "bold",
               marginBottom: "10px",
               textAlign: "center",
+              color: "#27374D",
             }}
           >
             Enquiry Form
@@ -160,7 +199,7 @@ const ContactForm = () => {
           <Typography
             variant="body2"
             sx={{
-              color: "#666",
+              color: "#526D82",
               marginBottom: "20px",
               textAlign: "center",
             }}
@@ -190,23 +229,26 @@ const ContactForm = () => {
                 required
               />
 
-              {/* Phone Input with Country Code and Flag */}
               <PhoneInput
-                country={"in"} // Default country to India
+                country={"in"}
                 value={formData.mobile}
                 onChange={handlePhoneChange}
+                placeholder=""
                 inputProps={{
                   name: "contactNumber",
                   required: true,
                 }}
+                inputClass="custom-phone-input"
                 containerStyle={{ width: "100%" }}
                 inputStyle={{
                   width: "100%",
                   height: "56px",
                   borderRadius: "4px",
-                  border: "1px solid #ccc",
+                  border: "1px solid #e0e0e0",
                   fontSize: "16px",
                   paddingLeft: "50px",
+                  backgroundColor: "#DDE6ED",
+                  color: "#27374D",
                 }}
                 buttonStyle={{
                   borderRight: "1px solid #ccc",

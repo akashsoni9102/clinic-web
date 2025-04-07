@@ -6,22 +6,19 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();
 
-  // State for counting numbers
   const [patientsCount, setPatientsCount] = useState(0);
   const [doctorsCount, setDoctorsCount] = useState(0);
   const [successRate, setSuccessRate] = useState(0);
 
-  // Target values
-  const targetPatients = 50; // 50k+
-  const targetDoctors = 350; // 350+
-  const targetSuccessRate = 98; // 98%
+  const targetPatients = 50;
+  const targetDoctors = 350;
+  const targetSuccessRate = 98;
 
-  // Animation duration (in milliseconds)
-  const duration = 2000; // 2 seconds
+  const duration = 2000;
 
   useEffect(() => {
     const animateCount = (setCount, target) => {
-      const increment = target / (duration / 50); // Increment per 50ms
+      const increment = target / (duration / 50);
       let current = 0;
 
       const timer = setInterval(() => {
@@ -31,12 +28,11 @@ const HeroSection = () => {
           clearInterval(timer);
         }
         setCount(Math.floor(current));
-      }, 50); // Update every 50ms
+      }, 50);
 
-      return () => clearInterval(timer); // Cleanup on unmount
+      return () => clearInterval(timer);
     };
 
-    // Start animations for each number
     animateCount(setPatientsCount, targetPatients);
     animateCount(setDoctorsCount, targetDoctors);
     animateCount(setSuccessRate, targetSuccessRate);
@@ -45,12 +41,15 @@ const HeroSection = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#f0f4ff",
+        backgroundColor: "#DDE6ED",
         minHeight: "85vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         px: 3,
+        pt: 4,
+        pb: 6,
+        pl: { xs: 2, md: 6 },
       }}
     >
       <Container
@@ -65,11 +64,10 @@ const HeroSection = () => {
           p: 3,
         }}
       >
-        {/* Left Side (Text Content) */}
+        {/* Left Side */}
         <Box sx={{ flex: 1, maxWidth: 500 }}>
           <Typography variant="h4" fontWeight="bold" gutterBottom>
             Best Dermatologist in Gurgaon City
-            <br />
           </Typography>
           <Typography variant="body1" sx={{ mb: 3 }}>
             Book your appointment online – Fast, Easy, Secure!
@@ -78,32 +76,54 @@ const HeroSection = () => {
             <Button
               variant="contained"
               onClick={() => navigate("/AppointmentBooking")}
+              sx={{
+                backgroundColor: "#27374D",
+                "&:hover": {
+                  backgroundColor: "#1a1f2b",
+                },
+              }}
             >
               Appointment
             </Button>
-            <Button onClick={() => navigate("/Contact")} variant="outlined">
+            <Button
+              onClick={() => navigate("/Contact")}
+              variant="outlined"
+              sx={{
+                borderColor: "#27374D",
+                color: "#27374D",
+                "&:hover": {
+                  backgroundColor: "#27374D",
+                  color: "#ffffff",
+                  borderColor: "#27374D",
+                },
+              }}
+            >
               Enquiry
             </Button>
           </Box>
-          <Box
-            sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 4 }}
-          >
-            <Typography variant="h6">
-              {patientsCount}k+ <br />
-              <small>Happy Patients</small>
-            </Typography>
-            <Typography variant="h6">
-              {doctorsCount}+ <br />
-              <small>Specialist Doctors</small>
-            </Typography>
-            <Typography variant="h6">
-              {successRate}% <br />
-              <small>Our Success Rate</small>
-            </Typography>
+          <Box sx={{ mt: 4, display: "flex", justifyContent: "center", gap: 4 }}>
+            <Box>
+              <Typography variant="h6" sx={{ color: "#27374D" }}>
+                {patientsCount}k+
+              </Typography>
+              <Typography variant="body2">Happy Patients</Typography>
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ color: "#27374D" }}>
+                {doctorsCount}+
+              </Typography>
+              <Typography variant="body2">Specialist Doctors</Typography>
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ color: "#27374D" }}>
+                {successRate}%
+              </Typography>
+              <Typography variant="body2">Our Success Rate</Typography>
+            </Box>
           </Box>
         </Box>
 
-        {/* Right Side (Doctor's Image) */}
+        {/* Right Side */}
         <Box sx={{ flex: 1, textAlign: "center" }}>
           <img
             src={heroimage}

@@ -1,118 +1,173 @@
-import React from "react";
-import { Container, Box, Grid, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import { styled } from "@mui/system";
+import { Card, Grid, Typography, CardContent, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import ser1 from "../assets/ser1.jpeg";
 
-import ser1 from "../assets/ser1.jpeg"; // replace with actual image path
-import service2 from "../assets/ser2.jpeg"; // replace with actual image path
-import service3 from "../assets/ser3.jpeg"; // replace with actual image path
-import service4 from "../assets/ser4.jpeg"; // replace with actual image path
-import service5 from "../assets/ser5.jpeg"; // replace with actual image path
+const ServiceContainer = styled("div")(({ theme }) => ({
+  padding: "20px",
+  backgroundColor: "#DDE6ED",
+  minHeight: "100vh",
+  [theme.breakpoints.down("sm")]: {
+    padding: "10px",
+  },
+}));
 
-const ServiceBox = ({ title, image, content }) => {
+const Title = styled(Typography)(({ theme }) => ({
+  color: "#27374D",
+  textAlign: "center",
+  marginBottom: "20px",
+  fontSize: "2.5rem",
+  fontWeight: "bold",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.8rem",
+  },
+  [theme.breakpoints.down("xs")]: {
+    fontSize: "1.5rem",
+  },
+}));
+
+const Subtitle = styled(Typography)(({ theme }) => ({
+  textAlign: "center",
+  color: "#526D82",
+  marginBottom: "40px",
+  fontSize: "1rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.9rem",
+    marginBottom: "20px",
+  },
+}));
+
+const ServiceCard = styled(Card)(({ theme }) => ({
+  maxWidth: 345,
+  margin: "0 auto 20px",
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  backgroundColor: "#DDE6ED",
+  [theme.breakpoints.down("sm")]: {
+    maxWidth: "100%",
+  },
+}));
+
+const ServiceImage = styled("div")({
+  height: 200,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  width: "100%",
+});
+
+const BoldServiceTitle = styled(Typography)(({ theme }) => ({
+  color: "#27374D",
+  fontWeight: "bold",
+  fontSize: "1.1rem",
+  marginBottom: theme.spacing(1),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+  },
+}));
+
+const ReadMoreButton = styled(Button)(({ theme }) => ({
+  backgroundColor: "#27374D",
+  color: "#fff",
+  "&:hover": {
+    backgroundColor: "#1a1f2b",
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.8rem",
+    padding: "4px 8px",
+  },
+}));
+
+const LoadMoreButton = styled(Button)(({ theme }) => ({
+  display: "block",
+  margin: "20px auto",
+  backgroundColor: "#27374D",
+  color: "#fff",
+  "&:hover": {
+    backgroundColor: "#1a1f2b",
+  },
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.9rem",
+    padding: "6px 12px",
+  },
+}));
+
+const ServicePosts = [
+  { id: 1, image: ser1, title: "Dermatology" },
+  { id: 2, image: ser1, title: "Hair" },
+  { id: 3, image: ser1, title: "Pigmentation" },
+  { id: 4, image: ser1, title: "Scars" },
+  { id: 5, image: ser1, title: "Laser" },
+  { id: 6, image: ser1, title: "Antiaging" },
+  { id: 7, image: ser1, title: "Hair Transplant" },
+  { id: 8, image: ser1, title: "Medifacials" },
+  { id: 9, image: ser1, title: "Cosmic Surgeries" },
+];
+
+const ServicePage = () => {
+  const navigate = useNavigate();
+  const [visiblePosts, setVisiblePosts] = useState(9);
+
+  const handleReadMore = (id) => {
+    navigate(`/serviceDetail/${id}`);
+    window.scrollTo(0, 0);
+  };
+
+  const handleLoadMore = () => {
+    setVisiblePosts((prev) => prev + 3);
+  };
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
-        backgroundColor: "#fff",
-        borderRadius: "8px",
-        boxShadow: 3,
-        marginBottom: 3,
-        padding: 3,
-      }}
-    >
-      {/* Left Section (Image) */}
-      <Box
-        sx={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: { xs: 2, md: 0 }, // margin for small screens
-        }}
-      >
-        <img
-          src={image}
-          alt={title}
-          style={{
-            width: "100%",
-            height: "auto",
-            maxWidth: "400px", // limit the image size
-            borderRadius: "10px",
-          }}
-        />
-      </Box>
+    <ServiceContainer>
+      <Title variant="h3">Our Services</Title>
+      <Subtitle variant="body1">
+        Expert dermatologist you can trust, exceptional results at affordable prices.
+      </Subtitle>
+      <Grid container spacing={3} justifyContent="center" display="flex" flexWrap="wrap">
+        {ServicePosts.slice(0, visiblePosts).map((services) => (
+          <Grid
+            key={services.id}
+            sx={{
+              flexBasis: {
+                xs: "100%",
+                sm: "50%",
+                md: "33.33%",
+                lg: "25%",
+              },
+              maxWidth: {
+                xs: "100%",
+                sm: "50%",
+                md: "33.33%",
+                lg: "25%",
+              },
+              boxSizing: "border-box",
+              padding: "12px",
+            }}
+          >
+            <ServiceCard>
+              <ServiceImage style={{ backgroundImage: `url(${services.image})` }} />
+              <CardContent>
+                <BoldServiceTitle variant="h6">{services.title}</BoldServiceTitle>
+                <ReadMoreButton
+                  variant="contained"
+                  size="small"
+                  onClick={() => handleReadMore(services.id)}
+                  sx={{ mt: 2 }}
+                >
+                  Read More
+                </ReadMoreButton>
+              </CardContent>
+            </ServiceCard>
+          </Grid>
+        ))}
+      </Grid>
 
-      {/* Right Section (Text) */}
-      <Box
-        sx={{
-          flex: 2,
-          paddingLeft: { xs: 0, md: 3 },
-          textAlign: { xs: "center", md: "left" },
-        }}
-      >
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
-        <Typography variant="body1" paragraph>
-          {content}
-        </Typography>
-        <Button variant="contained" color="primary">
-          Explore
-        </Button>
-      </Box>
-    </Box>
+      {visiblePosts < ServicePosts.length && (
+        <LoadMoreButton variant="contained" onClick={handleLoadMore}>
+          Load More
+        </LoadMoreButton>
+      )}
+    </ServiceContainer>
   );
 };
 
-const Services = () => {
-  return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
-      <Typography variant="h3" gutterBottom textAlign="center">
-        Our Services
-      </Typography>
-
-      {/* Service Boxes */}
-      <Grid container columns={12} spacing={3}>
-  <Grid columnspan={{ xs: 12, md: 6 }}>
-    <ServiceBox
-      title="Facial"
-      image={ser1}
-      content="Facial treatments aim to rejuvenate and improve the health of your skin. With customized treatments, we focus on clearing skin, reducing signs of aging, and enhancing your natural glow."
-    />
-  </Grid>
-  <Grid columnspan={{ xs: 12, md: 6 }}>
-    <ServiceBox
-      title="Rhinoplasty"
-      image={service2}
-      content="Rhinoplasty, also known as a nose job, is a procedure that can enhance the shape, structure, and function of your nose, providing a more balanced facial appearance."
-    />
-  </Grid>
-  <Grid columnspan={{ xs: 12, md: 6 }}>
-    <ServiceBox
-      title="Eye Restructure"
-      image={service3}
-      content="Our eye structure services focus on enhancing the appearance of your eyes, whether it's for eyelid surgery or restoring symmetry to your eyes, giving you a refreshed look."
-    />
-  </Grid>
-  <Grid columnspan={{ xs: 12, md: 6 }}>
-    <ServiceBox
-      title="Fungal Treatment"
-      image={service4}
-      content="We offer specialized treatments for fungal infections affecting the skin, nails, and scalp. Our expert dermatologists provide effective, long-lasting solutions."
-    />
-  </Grid>
-  <Grid columnspan={{ xs: 12, md: 6 }}>
-    <ServiceBox
-      title="Ear Recreation"
-      image={service5}
-      content="Ear recreation surgery is aimed at reconstructing or reshaping the ears for individuals born with deformities or those affected by trauma, helping restore both function and aesthetic."
-    />
-  </Grid>
-</Grid>
-
-    </Container>
-  );
-};
-
-export default Services;
+export default ServicePage;
