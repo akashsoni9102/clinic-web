@@ -3,6 +3,27 @@ import { styled } from "@mui/system";
 import { Card, Grid, Typography, CardContent, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ser1 from "../assets/ser1.jpeg";
+import dermatology from "../assets/dermatology.avif";
+import hair from "../assets/hair.avif";
+import pigmentation from "../assets/pigmentation.avif";
+import scars from "../assets/scars.avif";
+import laser from "../assets/laser.avif";
+import antiaging from "../assets/antiaging.avif";
+import medifacials from "../assets/medifacials.avif";
+import hairtrans from "../assets/hairtrans.avif";
+import cosmic from "../assets/cosmic.avif";
+
+const ServicePosts = [
+  { id: 1, image: dermatology, title: "Dermatology" },
+  { id: 2, image: hair, title: "Hair" },
+  { id: 3, image: pigmentation, title: "Pigmentation" },
+  { id: 4, image: scars, title: "Scars" },
+  { id: 5, image: laser, title: "Laser" },
+  { id: 6, image: antiaging, title: "Antiaging" },
+  { id: 7, image: hairtrans, title: "Hair Transplant" },
+  { id: 8, image: medifacials, title: "Medifacials" },
+  { id: 9, image: cosmic, title: "Cosmic Surgeries" },
+];
 
 const ServiceContainer = styled("div")(({ theme }) => ({
   padding: "20px",
@@ -96,17 +117,7 @@ const LoadMoreButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const ServicePosts = [
-  { id: 1, image: ser1, title: "Dermatology" },
-  { id: 2, image: ser1, title: "Hair" },
-  { id: 3, image: ser1, title: "Pigmentation" },
-  { id: 4, image: ser1, title: "Scars" },
-  { id: 5, image: ser1, title: "Laser" },
-  { id: 6, image: ser1, title: "Antiaging" },
-  { id: 7, image: ser1, title: "Hair Transplant" },
-  { id: 8, image: ser1, title: "Medifacials" },
-  { id: 9, image: ser1, title: "Cosmic Surgeries" },
-];
+
 
 const ServicePage = () => {
   const navigate = useNavigate();
